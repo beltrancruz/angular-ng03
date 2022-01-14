@@ -1,0 +1,31 @@
+<div *ngIf="countries.length > 0" class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <caption>
+                List of countries
+            </caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Flag</th>
+                    <th>Name</th>
+                    <th>Population</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of countries; let i=index">
+                    <td>{{i + 1}}</td>
+                    <td>
+                        <img class="small-flag" [src]="item.flag" [alt]="i">
+                    </td>
+                    <td>{{item.name}}, {{item.capital}}</td>
+                    <td>{{item.population | number}}</td>
+                    <td>
+                        <a [routerLink]="['/country/',item.alpha2Code]">View...</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

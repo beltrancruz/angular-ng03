@@ -1,1 +1,21 @@
-<p>by-capital works!</p>
+<h2>By Capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-country-input 
+            placeholder="Search country by capital..."
+            (onDebounce)="suggestion($event)" 
+            (onEnter)="search($event)">
+        </app-country-input>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="isErr" class="alert alert-danger">
+    We cannot find anything about {{q}}
+</div>
+
+<app-country-table *ngIf="!isErr" [array]="countries"></app-country-table>
+
