@@ -1,21 +1,22 @@
-<h3>Search by region <small class="text-primary">{{activeRegion | titlecase}}</small></h3>
-<hr>
-<h5>Select your region</h5>
-<div class="container">
-    <div class="d-flex flex-wrap">
-        <div *ngFor="let item of regions" class="me-2 mb-2">
-            <button (click)="selectRegion(item)" [class]="getCssActive(item)">
-                {{item | uppercase}}
-            </button>
-    
-            <!-- [class.btn-primary]="item === activeRegion" -->
-    
-            <!-- [ngClass]="{
-                    'btn-primary': item === activeRegion,
-                    'btn-outline-primary': item !== activeRegion
-                }" -->        
+<div class="animate__animated animate__fadeIn" >
+    <h3>Search by region <small class="text-primary">{{activeRegion | titlecase}}</small></h3>
+    <hr>
+    <h5>Select your region</h5>
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            <div *ngFor="let item of regions" class="me-2 mb-2">
+                <button (click)="selectRegion(item)" [class]="getCssActive(item)">
+                    {{item | uppercase}}
+                </button>
+        
+                <!-- [class.btn-primary]="item === activeRegion" -->
+        
+                <!-- [ngClass]="{
+                        'btn-primary': item === activeRegion,
+                        'btn-outline-primary': item !== activeRegion
+                    }" -->        
+            </div>
         </div>
     </div>
 </div>
-
 <app-country-table [array]="countries"></app-country-table>

@@ -1,17 +1,33 @@
-<h2>By Capital</h2>
-<hr>
-
-<div class="row">
-    <div class="col">
-        <app-country-input 
-            placeholder="Search country by capital..."
-            (onDebounce)="suggestion($event)" 
-            (onEnter)="search($event)">
-        </app-country-input>
+<div class="animate__animated animate__fadeIn">
+    <h2>By Capital</h2>
+    <hr>
+    
+    <div class="row">
+        <div class="col">
+            <app-country-input 
+                placeholder="Search country by capital..."
+                (onDebounce)="suggestion($event)" 
+                (onEnter)="search($event)">
+            </app-country-input>
+        </div>
     </div>
+    <ul *ngIf="showSuggestions" class="list-group">
+        <li  *ngFor="let item of countriesSuggested" class="list-group-item list-group-item-action">
+            <a class="nav-link" [routerLink]="['/country',item.alpha2Code]">
+                {{item.capital}}
+            </a>
+        </li>
+        <li *ngIf="word.trim().length > 0" class="list-group-item list-group-item-action"
+            (click)="searchWord(word)"
+        >
+            <a class="nav-link">
+                Search "{{word}}"
+            </a>
+        </li>
+    </ul>
+    
+    <hr>
 </div>
-
-<hr>
 
 <div *ngIf="isErr" class="alert alert-danger">
     We cannot find anything about {{q}}
